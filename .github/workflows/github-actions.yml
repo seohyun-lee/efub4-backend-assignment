@@ -21,8 +21,8 @@ jobs:
 
       - name: make application.yml
         run: |
-          cd ./src/main/resources
-          touch ./application.yml
+          cd ./community/src/main/resources
+          touch ./community/application.yml
           echo "${{ secrets.APPLICATION }}" > ./application.yml
 
       - name: Gradle Caching
@@ -37,6 +37,7 @@ jobs:
 
       - name: Build with Gradle
         run: |
+          cd ./community
           chmod +x ./gradlew
           ./gradlew build -x test
 
@@ -51,8 +52,8 @@ jobs:
       - name: Docker build & push
         uses: docker/build-push-action@v6
         with:
-          context: .
-          file: ./Dockerfile
+          context: ./community
+          file: ./community/Dockerfile
           platforms: linux/amd64 # EC2 아키텍쳐에 맞게 (x86 = amd64, arm = arm64)
           push: true
           tags: ${{ secrets.DOCKER_REPO }}:latest
