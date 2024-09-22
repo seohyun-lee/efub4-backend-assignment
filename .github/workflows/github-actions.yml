@@ -22,7 +22,7 @@ jobs:
       - name: make application.yml
         run: |
           cd ./community/src/main/resources
-          touch ./community/application.yml
+          touch ./application.yml
           echo "${{ secrets.APPLICATION }}" > ./application.yml
 
       - name: Gradle Caching
