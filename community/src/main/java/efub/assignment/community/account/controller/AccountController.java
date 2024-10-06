@@ -33,7 +33,7 @@ public class AccountController {
     @PatchMapping("/profile/{account_id}")
     @ResponseStatus(value = HttpStatus.OK)
     public AccountResponseDto update(@PathVariable final Long account_id, @RequestBody @Valid final AccountUpdateRequestDto requestDto){
-        Account account = accountService.update(account_id,requestDto);
+        Account account = accountService.updateAccount(account_id,requestDto);
         return AccountResponseDto.from(account);
     }
 
