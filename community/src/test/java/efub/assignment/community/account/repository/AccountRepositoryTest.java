@@ -17,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE, connection = EmbeddedDatabaseConnection.H2)
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
+@TestMethodOrder(MethodOrderer.MethodName.class)
 class AccountRepositoryTest {
 
     @Autowired
