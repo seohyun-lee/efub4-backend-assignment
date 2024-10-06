@@ -6,7 +6,7 @@ import efub.assignment.community.account.service.AccountService;
 import efub.assignment.community.board.domain.Board;
 import efub.assignment.community.board.service.BoardService;
 import efub.assignment.community.exception.CustomDeleteException;
-import efub.assignment.community.post.PostRepository;
+import efub.assignment.community.post.repository.PostRepository;
 import efub.assignment.community.post.domain.Post;
 import efub.assignment.community.post.dto.PostRequestDto;
 import efub.assignment.community.post.dto.PostUpdateDto;
