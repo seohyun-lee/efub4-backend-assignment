@@ -4,6 +4,7 @@ import efub.assignment.community.account.domain.Account;
 import efub.assignment.community.account.dto.SignUpRequestDto;
 import efub.assignment.community.account.repository.AccountRepository;
 import efub.assignment.community.board.domain.Board;
+import efub.assignment.community.post.dto.PostUpdateDto;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -27,19 +28,81 @@ class PostTest {
         String university = "Test Univ.";
         String studentId = "1234";
 
-        Account account = Account.builder()
+        testAccount = Account.builder()
                 .email(email)
                 .password(password)
                 .nickname(nickname)
                 .university(university)
                 .studentId(studentId)
                 .build();
-        testAccount = account;
+    }
+
+    @BeforeEach
+    void testBoard_persist_setUp() {
+        // 테스트를 위한 Board 인스턴스 생성
+        String boardName = "보드이름";
+        String boardDescription = "보드설명";
+        String boardNotice = "보드공지";
+
+        testBoard = Board.builder()
+                .account(testAccount)
+                .boardName(boardName)
+                .boardDescription(boardDescription)
+                .boardNotice(boardNotice)
+                .build();
     }
 
     @Order(1)
     @Test
     void post_build_test() {
         // given
+        String title = "제목";
+        String content = "내용";
+        String writerOpen = "PUBLIC";
+
+        // when
+        Post post = Post.builder()
+                .account(testAccount)
+                .board(testBoard)
+                .title(title)
+                .content(content)
+                .writerOpen(writerOpen)
+                .build();
+
+        // then
+        assertEquals(testAccount, post.getAccount());
+        assertEquals(testBoard, post.getBoard());
+        assertEquals(title, post.getTitle());
+        assertEquals(content, post.getContent());
+        assertEquals(writerOpen, post.getWriterOpen());
+    }
+
+    @Order(2)
+    @Test
+    void post_update_test() {
+        // given
+        String title = "제목";
+        String content = "내용";
+        String writerOpen = "PUBLIC";
+
+        Post post = Post.builder()
+                .account(testAccount)
+                .board(testBoard)
+                .title(title)
+                .content(content)
+                .writerOpen(writerOpen)
+                .build();
+
+        String newTitle = "새 제목";
+        String newContent = "새 내용";
+        String newWriterOpen = "PRIVATE";
+
+        // when
+        post.update(newTitle, newContent, newWriterOpen);
+
+        // then
+        assertEquals(newTitle, post.getTitle());
+        assertEquals(newContent, post.getContent());
+        assertEquals(newWriterOpen, post.getWriterOpen());
     }
 }

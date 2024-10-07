@@ -37,8 +37,13 @@ class AccountRepositoryTest {
         String university = "Test Univ.";
         String studentId = "1234";
 
-        SignUpRequestDto requestDto = new SignUpRequestDto(email, password, nickname, university, studentId);
-        testAccount = requestDto.toEntity();
+        testAccount = Account.builder()
+                .email(email)
+                .password(password)
+                .nickname(nickname)
+                .university(university)
+                .studentId(studentId)
+                .build();
         testEntityManager.persist(testAccount);
     }
 

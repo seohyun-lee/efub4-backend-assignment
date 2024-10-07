@@ -55,7 +55,7 @@ public class PostService {
 
     public Long updatePost(Long postId, PostUpdateDto dto){
         Post post = findPostById(postId);
-        post.update(dto);
+        post.update(dto.getTitle(), dto.getContent(), dto.getWriterOpen());
         return post.getPostId();
     }
 
