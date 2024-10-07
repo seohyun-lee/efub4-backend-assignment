@@ -1,12 +1,8 @@
 package efub.assignment.community.post.domain;
 
 import efub.assignment.community.account.domain.Account;
-import efub.assignment.community.account.dto.SignUpRequestDto;
-import efub.assignment.community.account.repository.AccountRepository;
 import efub.assignment.community.board.domain.Board;
-import efub.assignment.community.post.dto.PostUpdateDto;
 import org.junit.jupiter.api.*;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import static org.junit.jupiter.api.Assertions.*;

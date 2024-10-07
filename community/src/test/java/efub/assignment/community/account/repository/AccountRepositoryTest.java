@@ -1,7 +1,6 @@
 package efub.assignment.community.account.repository;
 
 import efub.assignment.community.account.domain.Account;
-import efub.assignment.community.account.dto.SignUpRequestDto;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.jdbc.EmbeddedDatabaseConnection;

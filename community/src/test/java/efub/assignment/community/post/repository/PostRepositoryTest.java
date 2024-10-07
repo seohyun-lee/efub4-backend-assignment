@@ -1,7 +1,6 @@
 package efub.assignment.community.post.repository;
 
 import efub.assignment.community.account.domain.Account;
-import efub.assignment.community.account.repository.AccountRepository;
 import efub.assignment.community.board.domain.Board;
 import efub.assignment.community.post.domain.Post;
 import org.junit.jupiter.api.*;
